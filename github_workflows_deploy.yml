@@ -1,0 +1,32 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Optional: if you have a build step (e.g. static site generator), add it
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install (optional)
+        run: |
+          if [ -f package.json ]; then npm ci; fi
+
+      - name: Build (optional)
+        run: |
+          if [ -f package.json ] && npm run | grep -q build; then npm run build; fi
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./   # change if your built files live in a subfolder like ./public
