@@ -35,6 +35,35 @@ document.addEventListener('DOMContentLoaded', () => {
     menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
 
+  // Projects dropdown
+  const projectsDropdown = document.getElementById('projects-dropdown');
+  const projectsMenu = document.getElementById('projects-menu');
+  if(projectsDropdown && projectsMenu){
+    projectsDropdown.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = projectsMenu.classList.contains('show');
+      projectsMenu.classList.toggle('show');
+      projectsDropdown.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+    });
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if(!projectsDropdown.contains(e.target) && !projectsMenu.contains(e.target)){
+        projectsMenu.classList.remove('show');
+        projectsDropdown.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  // Contact download (placeholder - to be implemented later)
+  const contactDownload = document.getElementById('contact-download');
+  if(contactDownload){
+    contactDownload.addEventListener('click', (e) => {
+      // Placeholder for future file download functionality
+      // e.preventDefault();
+      // window.location.href = 'path/to/file.pdf';
+    });
+  }
+
   // Load projects from JSON
   fetch('data/projects.json')
     .then(r => r.ok ? r.json() : Promise.reject('Could not load projects'))

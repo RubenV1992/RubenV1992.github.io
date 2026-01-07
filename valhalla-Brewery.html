@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Valhalla Brewery — Craft Beer Collection</title>
+  <meta name="description" content="Premium craft brewery offering handcrafted beers with rich flavors and exceptional quality." />
+  <link rel="stylesheet" href="brewery-styles.css">
+  <link rel="stylesheet" href="hover-effects.css">
+</head>
+<body>
+  <header class="brewery-header">
+    <div class="header-container">
+      <a href="index.html" class="brewery-logo">
+        <span class="logo-icon">🍺</span>
+        <span class="logo-text">Valhalla Brewery</span>
+      </a>
+      <nav class="brewery-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="#products" class="nav-link">Products</a>
+        <a href="#about" class="nav-link">About</a>
+        <button class="cart-icon-btn" id="cart-toggle" aria-label="Shopping cart">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-badge" id="cart-badge">0</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">Craft Beer Excellence</h1>
+        <p class="hero-subtitle">Handcrafted with passion, brewed with tradition</p>
+      </div>
+    </section>
+
+    <section id="products" class="products-section">
+      <div class="container">
+        <h2 class="section-title">Our Collection</h2>
+        <div class="products-grid" id="products-grid">
+          <!-- Products will be dynamically generated -->
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about-section">
+      <div class="container">
+        <h2 class="section-title">About Valhalla Brewery</h2>
+        <p class="about-text">
+          Since 2015, Valhalla Brewery has been crafting exceptional beers using traditional methods 
+          and the finest ingredients. Each bottle tells a story of dedication, quality, and passion 
+          for the art of brewing.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <aside class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+      <h2 class="cart-title">Your Cart</h2>
+      <button class="cart-close" id="cart-close" aria-label="Close cart">×</button>
+    </div>
+    <div class="cart-content" id="cart-content">
+      <div class="cart-empty" id="cart-empty">
+        <p>Your cart is empty</p>
+      </div>
+      <div class="cart-items" id="cart-items"></div>
+    </div>
+    <div class="cart-footer" id="cart-footer">
+      <div class="cart-total">
+        <span class="total-label">Total:</span>
+        <span class="total-amount" id="cart-total">$0.00</span>
+      </div>
+      <button class="checkout-btn" id="checkout-btn" disabled>Checkout</button>
+    </div>
+  </aside>
+
+  <footer class="brewery-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Valhalla Brewery. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="cart.js"></script>
+</body>
+</html>

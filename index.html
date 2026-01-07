@@ -5,16 +5,24 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Your Name — Portfolio</title>
   <meta name="description" content="Portfolio of Your Name — developer, designer, maker." />
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css_styles.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="#">Your Name</a>
+      <a class="brand" href="index.html">Your Name</a>
       <nav id="nav" class="nav">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        <a href="index.html" class="nav-link">Home</a>
+        <div class="dropdown">
+          <button class="dropdown-toggle" id="projects-dropdown" aria-label="Projects menu" aria-expanded="false">Projects</button>
+          <div class="dropdown-menu" id="projects-menu">
+            <a href="#projects" class="dropdown-item">View All Projects</a>
+            <a href="project1.html" class="dropdown-item">Project 1</a>
+            <a href="project2.html" class="dropdown-item">Project 2</a>
+            <a href="https://example.com" class="dropdown-item" target="_blank" rel="noopener">External Project</a>
+          </div>
+        </div>
+        <a href="#contact" class="nav-link" id="contact-download">Contact</a>
         <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
       </nav>
       <button id="menu-toggle" class="menu-toggle" aria-label="Open menu">☰</button>
@@ -61,6 +69,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js" defer></script>
+  <script src="js_main.js" defer></script>
 </body>
 </html>

@@ -27,9 +27,65 @@ body{
 .header-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0.75rem 0}
 .brand{font-weight:700;color:var(--text);text-decoration:none}
 .nav{display:flex;gap:0.75rem;align-items:center}
-.nav a{color:var(--muted);text-decoration:none;padding:0.4rem 0.6rem;border-radius:6px}
-.nav a:hover{color:var(--text);background:rgba(3,102,214,0.06)}
+.nav a.nav-link{color:var(--muted);text-decoration:none;padding:0.4rem 0.6rem;border-radius:6px}
+.nav a.nav-link:hover{color:var(--text);background:rgba(3,102,214,0.06)}
 .menu-toggle{display:none;border:0;background:transparent;font-size:1.25rem}
+
+/* Dropdown Menu */
+.dropdown{position:relative}
+.dropdown-toggle{
+  background:transparent;
+  border:0;
+  color:var(--muted);
+  padding:0.4rem 0.6rem;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:inherit;
+  font-family:inherit;
+  display:flex;
+  align-items:center;
+  gap:0.25rem;
+}
+.dropdown-toggle:hover{color:var(--text);background:rgba(3,102,214,0.06)}
+.dropdown-toggle::after{
+  content:"▼";
+  font-size:0.7rem;
+  transition:transform 0.2s;
+}
+.dropdown-toggle[aria-expanded="true"]::after{transform:rotate(180deg)}
+.dropdown-menu{
+  position:absolute;
+  top:100%;
+  left:0;
+  margin-top:0.5rem;
+  background:var(--card);
+  border:1px solid rgba(2,6,23,0.08);
+  border-radius:var(--radius);
+  box-shadow:0 8px 24px rgba(2,6,23,0.12);
+  min-width:180px;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(-10px);
+  transition:opacity 0.2s,transform 0.2s,visibility 0.2s;
+  z-index:1000;
+  padding:0.5rem 0;
+}
+.dropdown-menu.show{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+.dropdown-item{
+  display:block;
+  padding:0.6rem 1rem;
+  color:var(--text);
+  text-decoration:none;
+  transition:background 0.2s;
+}
+.dropdown-item:hover{
+  background:rgba(3,102,214,0.06);
+  color:var(--accent);
+}
 
 /* Hero */
 .hero{padding:4rem 0 3rem}
@@ -54,7 +110,9 @@ h2{margin:0 0 1rem;font-size:1.25rem}
 /* Responsive */
 @media (max-width:800px){
   .nav{display:none}
+  .nav.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--card);border-bottom:1px solid rgba(2,6,23,0.08);padding:1rem;box-shadow:0 4px 12px rgba(2,6,23,0.08);z-index:999}
   .menu-toggle{display:block}
+  .dropdown-menu{position:static;margin-top:0;margin-left:1rem;box-shadow:none;border:none;border-top:1px solid rgba(2,6,23,0.08);border-radius:0}
 }
 
 /* Dark mode */
@@ -68,7 +126,76 @@ h2{margin:0 0 1rem;font-size:1.25rem}
   }
   .site-header{border-bottom-color:rgba(255,255,255,0.04)}
   .site-footer{border-top-color:rgba(255,255,255,0.04)}
+  .dropdown-menu{border-color:rgba(255,255,255,0.08);box-shadow:0 8px 24px rgba(0,0,0,0.3)}
 }
 
 /* Small utilities */
 .hidden{display:none}
+
+/* Presentation Cards Container */
+.presentation-cards-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:1.5rem;
+  padding:2rem 0;
+  perspective:1000px;
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* Responsive grid for up to 5 cards */
+@media (min-width:600px){
+  .presentation-cards-container{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+@media (min-width:900px){
+  .presentation-cards-container{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+@media (min-width:1200px){
+  .presentation-cards-container{
+    grid-template-columns:repeat(5,1fr);
+  }
+}
+
+/* Presentation Card */
+.presentation-card{
+  position:relative;
+  width:100%;
+  height:280px;
+  transform-style:preserve-3d;
+  transition:transform 0.6s ease;
+  cursor:pointer;
+}
+
+.presentation-card:hover{
+  transform:rotateY(180deg) rotateX(180deg);
+}
+
+.presentation-card-front,
+.presentation-card-back{
+  position:absolute;
+  width:100%;
+  height:100%;
+  backface-visibility:hidden;
+  border-radius:var(--radius);
+  box-shadow:0 8px 24px rgba(2,6,23,0.08);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:1.5rem;
+  background:var(--card);
+}
+
+.presentation-card-front{
+  transform:rotateY(0deg);
+}
+
+.presentation-card-back{
+  transform:rotateY(180deg) rotateX(180deg);
+  background:var(--accent);
+  color:#fff;
+}

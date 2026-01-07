@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Premium Auto Showcase — Luxury Vehicles</title>
+  <meta name="description" content="Explore our premium collection of luxury and performance vehicles." />
+  <link rel="stylesheet" href="auto-store-styles.css">
+</head>
+<body>
+  <header class="auto-header">
+    <div class="header-container">
+      <h1 class="showroom-title">Premium Auto Showcase</h1>
+      <p class="showroom-subtitle">Engineering Excellence, Performance Redefined</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="carousel-section">
+      <div class="carousel-wrapper">
+        <button class="carousel-nav carousel-prev" id="carousel-prev" aria-label="Previous vehicle">
+          <span>‹</span>
+        </button>
+        
+        <div class="carousel-container" id="carousel-container">
+          <div class="carousel-track" id="carousel-track">
+            <!-- Vehicle cards will be dynamically generated -->
+          </div>
+        </div>
+
+        <button class="carousel-nav carousel-next" id="carousel-next" aria-label="Next vehicle">
+          <span>›</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="auto-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Premium Auto Showcase. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="carousel.js"></script>
+</body>
+</html>

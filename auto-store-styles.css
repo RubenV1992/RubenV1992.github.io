@@ -1,0 +1,371 @@
+/* CSS Variables - Automotive Showroom Theme */
+:root {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #1a1a1a;
+  --bg-overlay: rgba(0, 0, 0, 0.75);
+  --text-primary: #ffffff;
+  --text-secondary: #b8b8b8;
+  --accent-gold: #d4af37;
+  --accent-blue: #0066cc;
+  --accent-red: #cc0000;
+  --accent-green: #00cc66;
+  --border-color: #333333;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.8);
+  --radius: 8px;
+  --transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Header */
+.auto-header {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.showroom-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.showroom-subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+/* Carousel Section */
+.carousel-section {
+  padding: 4rem 0;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 2rem 0;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* Vehicle Card */
+.vehicle-card {
+  flex: 0 0 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+}
+
+.vehicle-image-container {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+  background: var(--bg-secondary);
+}
+
+.vehicle-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.vehicle-card:hover .vehicle-image {
+  transform: scale(1.05);
+}
+
+/* Specs Panel Overlay */
+.specs-panel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, var(--bg-overlay) 0%, rgba(0, 0, 0, 0.4) 100%);
+  backdrop-filter: blur(8px);
+  padding: 2rem;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.vehicle-card:hover .specs-panel {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Specs Content */
+.specs-header {
+  margin-bottom: 1.5rem;
+}
+
+.vehicle-name {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.vehicle-category {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  background: var(--accent-gold);
+  color: var(--bg-primary);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.vehicle-category.sports {
+  background: var(--accent-red);
+}
+
+.vehicle-category.luxury {
+  background: var(--accent-gold);
+}
+
+.vehicle-category.offroad {
+  background: #8b6914;
+}
+
+.vehicle-category.electric {
+  background: var(--accent-green);
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.spec-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.spec-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.spec-unit {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  margin-left: 0.25rem;
+}
+
+.spec-type {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+/* Carousel Navigation */
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: var(--text-primary);
+  font-size: 2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  z-index: 10;
+  backdrop-filter: blur(10px);
+}
+
+.carousel-nav:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: var(--accent-gold);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-nav:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-nav:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.carousel-prev {
+  left: 0;
+}
+
+.carousel-next {
+  right: 0;
+}
+
+.carousel-nav span {
+  line-height: 1;
+  font-weight: 300;
+}
+
+/* Footer */
+.auto-footer {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  padding: 2rem 0;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .carousel-wrapper {
+    padding: 0 3rem;
+  }
+
+  .vehicle-image-container {
+    height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-wrapper {
+    padding: 0 2rem;
+  }
+
+  .carousel-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+
+  .vehicle-image-container {
+    height: 400px;
+  }
+
+  .specs-panel {
+    padding: 1.5rem;
+  }
+
+  .vehicle-name {
+    font-size: 1.5rem;
+  }
+
+  .specs-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  .spec-value {
+    font-size: 1.25rem;
+  }
+}
+
+/* Touch device fallback */
+@media (hover: none) {
+  .specs-panel {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .vehicle-card:active .specs-panel {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Accessibility */
+.carousel-nav:focus {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 2px;
+}
+
+.vehicle-card:focus {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 4px;
+}
+
+/* Smooth scrolling for wheel */
+.carousel-track {
+  scroll-behavior: smooth;
+}
