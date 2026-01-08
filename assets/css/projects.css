@@ -1,95 +1,136 @@
-/* Projects page custom styles (keeps header/footer look from index and adds card styles) */
+/* Projects layout and card styling
+   - .projects-container uses flexbox so cards sit next to each other
+   - cards are responsive: they wrap on smaller screens
+   - basic card sizes, spacing, and flip behaviors preserved
+*/
 
-/* Reset & base */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root{
-  --bg: #0f0f0f;
-  --panel: #141414;
-  --muted: #cfcfcf;
-  --accent: #f0c674;
+.projects-container {
+  display: flex;
+  flex-wrap: wrap;           /* allow cards to wrap to next row if needed */
+  gap: 1.5rem;               /* space between cards */
+  justify-content: center;   /* center the row of cards */
+  align-items: stretch;
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
-html,body{height:100%;}
-body{
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  background-color: var(--bg);
-  color: #eaeaea;
-  min-height: 100vh;
+/* Card sizing & base behavior */
+.card {
+  flex: 1 1 320px;           /* grow, shrink, basis: 320px */
+  max-width: 360px;          /* prevent overly wide cards on large screens */
+  min-width: 260px;          /* prevent cards from becoming too narrow */
+  box-sizing: border-box;
+  perspective: 1200px;       /* needed for 3D flip */
+  cursor: pointer;
+}
+
+/* Inner flip container */
+.card-inner {
+  width: 100%;
+  height: 340px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  background: #fff;
+}
+
+/* Front & back faces */
+.card-front,
+.card-back {
+  position: absolute;
+  inset: 0;                  /* top/right/bottom/left = 0 */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   display: flex;
   flex-direction: column;
 }
 
-a{ color: inherit; text-decoration: none; }
-
-/* Header */
-header{ background-color: var(--panel); border-bottom: 1px solid #222; }
-.nav-container{ max-width:1100px; margin:0 auto; padding:1rem 1.5rem; display:flex; align-items:center; justify-content:space-between; }
-.logo{ font-size:1.2rem; font-weight:600; letter-spacing:0.5px; }
-nav ul{ list-style:none; display:flex; gap:1.5rem; align-items:center; }
-nav a{ font-size:0.95rem; padding:0.4rem 0.6rem; transition: color 0.2s ease; }
-nav a:hover, nav a:focus{ color: var(--accent); outline:none; }
-.dropdown{ position:absolute; top:130%; left:0; min-width:180px; background-color:#1a1a1a; border:1px solid #2a2a2a; border-radius:6px; padding:0.5rem 0; opacity:0; visibility:hidden; transform:translateY(-8px); transition:opacity .2s ease, transform .2s ease, visibility .2s; z-index:100; }
-nav li{ position:relative; }
-li:hover > .dropdown, li:focus-within > .dropdown{ opacity:1; visibility:visible; transform:translateY(0); }
-
-/* Main projects layout */
-.projects-main{ flex:1; max-width:1100px; margin:0 auto; padding:3rem 1.5rem; }
-.projects-container{ display:grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap:1.5rem; align-items:stretch; }
-
-/* Card component */
-.card{ perspective: 1200px; }
-.card-inner{ position:relative; width:100%; height:320px; transition: transform 0.8s; transform-style: preserve-3d; cursor:pointer; border-radius:10px; box-shadow: 0 8px 18px rgba(0,0,0,0.6); overflow:visible; }
-.card-front, .card-back{ position:absolute; inset:0; border-radius:10px; backface-visibility:hidden; display:flex; align-items:flex-end; justify-content:center; padding:1rem; color: #111; }
-
-/* Front face (image or fallback) */
-.card-front{
-  background-color: #ffffff; /* fallback white when no image assigned */
+/* Default front appearance */
+.card-front {
+  background-color: #ffffff;
   background-size: cover;
   background-position: center;
-  color: #fff; /* title color when image present, but body falls back to dark */
-}
-.card-front .card-title{ width:100%; text-align:left; font-weight:700; color: #fff; text-shadow: 0 2px 6px rgba(0,0,0,0.6); }
-
-/* Back face */
-.card-back{
-  background-color: #0f0f0f;
-  color: var(--muted);
-  transform: rotateY(180deg); /* default for Y-axis flip; will be overridden per-axis with modifiers */
-  display:flex; flex-direction:column; justify-content:space-between; align-items:flex-start; padding:1rem;
-}
-.card-body h3{ margin-bottom:0.5rem; color:#eaeaea; }
-.card-body p{ color:var(--muted); font-size:0.95rem; line-height:1.4; }
-.card-footer{ width:100%; text-align:right; font-size:0.85rem; color:#888; }
-
-/* Axis specific behavior */
-.card.axis-x .card-back{ transform: rotateX(180deg); }
-.card.axis-x .card-front{ transform: rotateX(0); }
-.card.axis-x:hover .card-inner, .card.axis-x:focus-within .card-inner{ transform: rotateX(180deg); }
-
-.card.axis-y .card-back{ transform: rotateY(180deg); }
-.card.axis-y:hover .card-inner, .card.axis-y:focus-within .card-inner{ transform: rotateY(180deg); }
-
-.card.axis-z .card-back{ transform: rotateZ(180deg); }
-.card.axis-z:hover .card-inner, .card.axis-z:focus-within .card-inner{ transform: rotateZ(180deg); }
-
-/* Ensure proper backface rendering for Z axis: flip front on Z too when showing back */
-.card.axis-z .card-front{ transform: none; }
-.card.axis-z .card-inner{ transform-origin: center center; }
-
-/* Hover & focus styles */
-.card:focus{ outline: 2px solid rgba(240,198,116,0.15); }
-
-/* Responsive adjustments */
-@media (max-width:640px){
-  .card-inner{ height:280px; }
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
 }
 
-/* Footer */
-footer{ background-color: var(--panel); border-top:1px solid #222; padding:1.5rem; text-align:center; font-size:0.85rem; color:#888; }
+/* Titles on front */
+.card-title {
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  padding: .5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+}
 
-/* Small helper to make the front/back text legible depending on presence of image */
-.card-front:has([style]) .card-title{ color:#fff; }
+/* Back face appearance */
+.card-back {
+  padding: 1rem;
+  background: #f8f8f8;
+  transform: rotateY(180deg); /* default assumes Y-axis flip for compatibility */
+  align-items: flex-start;
+  justify-content: center;
+}
 
-/* If you want the front text dark when there's no image (white bg), we use this rule: */
-.card-front:not([style]) .card-title{ color:#111; }
+/* If a card uses axis-x or axis-z we set the back face rotation accordingly */
+.card.axis-x .card-back { transform: rotateX(180deg); }
+.card.axis-y .card-back { transform: rotateY(180deg); }
+.card.axis-z .card-back { transform: rotateZ(180deg); }
+
+/* Trigger flips on hover and keyboard focus */
+.card:focus .card-inner,
+.card:hover .card-inner { transform: rotateY(180deg); }
+
+/* Ensure axis-specific flip transform matches the back-face rotation */
+.card.axis-x:focus .card-inner,
+.card.axis-x:hover .card-inner { transform: rotateX(180deg); }
+.card.axis-y:focus .card-inner,
+.card.axis-y:hover .card-inner { transform: rotateY(180deg); }
+.card.axis-z:focus .card-inner,
+.card.axis-z:hover .card-inner { transform: rotateZ(180deg); }
+
+/* Card content layout on the back */
+.card-body {
+  padding: 1rem;
+}
+.card-body h3 {
+  margin: 0 0 .5rem 0;
+}
+.card-body p {
+  margin: 0;
+  color: #333;
+  line-height: 1.4;
+}
+
+/* Footer inside card back */
+.card-footer {
+  margin-top: auto;
+  padding: .75rem 1rem;
+  width: 100%;
+  background: rgba(0,0,0,0.03);
+  font-size: .9rem;
+  color: #555;
+  box-sizing: border-box;
+}
+
+/* Responsive: stack cards on small screens */
+@media (max-width: 640px) {
+  .projects-container {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .card {
+    max-width: none;
+    width: 100%;
+    min-width: 0;
+  }
+  .card-inner {
+    height: auto; /* let content define height on small screens if needed */
+    min-height: 220px;
+  }
+}
