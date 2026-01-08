@@ -1,0 +1,136 @@
+/* Projects layout and card styling
+   - .projects-container uses flexbox so cards sit next to each other
+   - cards are responsive: they wrap on smaller screens
+   - basic card sizes, spacing, and flip behaviors preserved
+*/
+
+.projects-container {
+  display: flex;
+  flex-wrap: wrap;           /* allow cards to wrap to next row if needed */
+  gap: 1.5rem;               /* space between cards */
+  justify-content: center;   /* center the row of cards */
+  align-items: stretch;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Card sizing & base behavior */
+.card {
+  flex: 1 1 320px;           /* grow, shrink, basis: 320px */
+  max-width: 360px;          /* prevent overly wide cards on large screens */
+  min-width: 260px;          /* prevent cards from becoming too narrow */
+  box-sizing: border-box;
+  perspective: 1200px;       /* needed for 3D flip */
+  cursor: pointer;
+}
+
+/* Inner flip container */
+.card-inner {
+  width: 100%;
+  height: 340px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  background: #fff;
+}
+
+/* Front & back faces */
+.card-front,
+.card-back {
+  position: absolute;
+  inset: 0;                  /* top/right/bottom/left = 0 */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Default front appearance */
+.card-front {
+  background-color: #ffffff;
+  background-size: cover;
+  background-position: center;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* Titles on front */
+.card-title {
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  padding: .5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+/* Back face appearance */
+.card-back {
+  padding: 1rem;
+  background: #f8f8f8;
+  transform: rotateY(180deg); /* default assumes Y-axis flip for compatibility */
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* If a card uses axis-x or axis-z we set the back face rotation accordingly */
+.card.axis-x .card-back { transform: rotateX(180deg); }
+.card.axis-y .card-back { transform: rotateY(180deg); }
+.card.axis-z .card-back { transform: rotateZ(180deg); }
+
+/* Trigger flips on hover and keyboard focus */
+.card:focus .card-inner,
+.card:hover .card-inner { transform: rotateY(180deg); }
+
+/* Ensure axis-specific flip transform matches the back-face rotation */
+.card.axis-x:focus .card-inner,
+.card.axis-x:hover .card-inner { transform: rotateX(180deg); }
+.card.axis-y:focus .card-inner,
+.card.axis-y:hover .card-inner { transform: rotateY(180deg); }
+.card.axis-z:focus .card-inner,
+.card.axis-z:hover .card-inner { transform: rotateZ(180deg); }
+
+/* Card content layout on the back */
+.card-body {
+  padding: 1rem;
+}
+.card-body h3 {
+  margin: 0 0 .5rem 0;
+}
+.card-body p {
+  margin: 0;
+  color: #333;
+  line-height: 1.4;
+}
+
+/* Footer inside card back */
+.card-footer {
+  margin-top: auto;
+  padding: .75rem 1rem;
+  width: 100%;
+  background: rgba(0,0,0,0.03);
+  font-size: .9rem;
+  color: #555;
+  box-sizing: border-box;
+}
+
+/* Responsive: stack cards on small screens */
+@media (max-width: 640px) {
+  .projects-container {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .card {
+    max-width: none;
+    width: 100%;
+    min-width: 0;
+  }
+  .card-inner {
+    height: auto; /* let content define height on small screens if needed */
+    min-height: 220px;
+  }
+}
