@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects</title>
+  <link rel="stylesheet" href="assets/css/projects.css">
+</head>
+<body>
+
+  <!-- Header (copied from index.html) -->
+  <header>
+    <div class="nav-container">
+      <div class="logo">Ruben Villasmil</div>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#contact">Contact</a></li>
+
+          <li>
+            <a href="#" aria-haspopup="true">Projects</a>
+            <div class="dropdown" role="menu">
+              <a href="#" role="menuitem">Other Websites</a>
+              <a href="#" role="menuitem">YouTube</a>
+              <a href="assets/cv.pdf" download role="menuitem">CV Download</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Projects container -->
+  <main class="projects-main">
+    <section class="projects-container">
+
+      <!-- Card 1: rotate on X axis, has background image -->
+      <article class="card axis-x" tabindex="0">
+        <div class="card-inner">
+          <div class="card-front" style="background-image: url('assets/images/project1.jpg');">
+            <div class="card-title">Project Alpha</div>
+          </div>
+          <div class="card-back">
+            <div class="card-body">
+              <h3>Project Alpha</h3>
+              <p>Short description of Project Alpha. Flip to see more or click to open details.</p>
+            </div>
+            <footer class="card-footer">Status: In progress</footer>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2: rotate on Y axis, no background assigned (falls back to white) -->
+      <article class="card axis-y" tabindex="0">
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-title">Project Beta</div>
+          </div>
+          <div class="card-back">
+            <div class="card-body">
+              <h3>Project Beta</h3>
+              <p>This project currently has no background image assigned — it falls back to a white background.</p>
+            </div>
+            <footer class="card-footer">Status: Not assigned</footer>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3: rotate on Z axis, has background image -->
+      <article class="card axis-z" tabindex="0">
+        <div class="card-inner">
+          <div class="card-front" style="background-image: url('assets/images/project3.jpg');">
+            <div class="card-title">Project Gamma</div>
+          </div>
+          <div class="card-back">
+            <div class="card-body">
+              <h3>Project Gamma</h3>
+              <p>Short description for Project Gamma. Replace the background image by dropping one into assets/images/ and updating the URL.</p>
+            </div>
+            <footer class="card-footer">Status: Prototype</footer>
+          </div>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <!-- Footer (copied from index.html) -->
+  <footer>
+    © 2026 Ruben Villasmil. All rights reserved.
+  </footer>
+
+</body>
+</html>
