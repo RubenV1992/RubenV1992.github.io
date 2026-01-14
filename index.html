@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home</title>
-
+  <link rel="stylesheet" href="css/personal _portfolio.css" />
   <style>
     /* ===============================
        Base Reset
@@ -116,27 +116,7 @@
       transform: translateY(0);
     }
 
-    /* ===============================
-       Main Content
-       =============================== */
-    main {
-      flex: 1;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem;
-    }
-
-    main h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    main p {
-      color: #cfcfcf;
-      max-width: 600px;
-      line-height: 1.6;
-    }
-
+   
     /* ===============================
        Footer
        =============================== */
@@ -155,17 +135,17 @@
   <!-- Header -->
   <header>
     <div class="nav-container">
-      <div class="logo">Ruben Villasmil</div>
+      <div class="logo">Your Name</div>
 
       <nav>
         <ul>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="#">Home</a></li>
           <li><a href="#contact">Contact</a></li>
 
           <li>
-            <a href="projects.html" aria-haspopup="true">Projects</a>
+            <a href="#" aria-haspopup="true">Projects</a>
             <div class="dropdown" role="menu">
-              <a href="projects.html" role="menuitem">Other Websites</a>
+              <a href="#" role="menuitem">Other Websites</a>
               <a href="#" role="menuitem">YouTube</a>
               <a href="assets/cv.pdf" download role="menuitem">CV Download</a>
             </div>
@@ -176,12 +156,162 @@
   </header>
 
   <!-- Main -->
-  <main>
-    <h1>Welcome</h1>
-    <p>
-      This is the homepage. Use the navigation above to explore projects,
-      access external platforms, or download the CV.
-    </p>
+  <main class="portfolio">
+
+    <!-- LEFT COLUMN -->
+    <section class="main-column">
+
+      <!-- HEADER -->
+      <header class="profile-header">
+        <div class="profile-image">
+          <img src="images/PortfolioPictures/yo_transparent (2).png" alt="Profile photo">
+        </div>
+
+        <div class="profile-info">
+          <h6>Ruben Villasmil</h6>
+          <br>
+          <h6>Programmer</h6>
+          <br>
+          <p-experience>4+ Years Work Experience</p-experience>
+        </div>
+      </header>
+
+      <!-- SUMMARY -->
+      <section class="card summary">
+        <h3>Summary</h3>
+        <p>
+          Experienced programmer with over 6 years of experience on customer
+          services, debt settlement and software development, ready to apply knowledge in
+          professional environments with multiple skills.
+        </p>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section class="card experience">
+        <h3>Experience</h3>
+
+        <article class="job">
+          <h4>Computer Engineering Studies (Panama)</h4>
+          <span class="job-meta">ULP – 2014–2019</span>
+          <p>
+            Software development studies covering programming applications,
+            websites, Java, C#, MySQL, Unreal Engine, and development tools.
+          </p>
+        </article>
+
+        <!-- QR GRID -->
+        <div class="qr-grid">
+          <a href="https://sketchfab.com/rubenvillas" class="qr-button" target="_blank"  rel="noopener">
+              <img src="images/PortfolioPictures/QR/sketchfab qr.png" alt="Sketchfab link">
+          </a>
+          <a href="https://www.youtube.com/@rubenvillasmil7013" class="qr-button" target="_blank"  rel="noopener">
+              <img src="images/PortfolioPictures/QR/link principal  youtube.png" alt="youtube link">
+          </a>
+          <a href="https://2017.spaceappschallenge.org/challenges/ideate-and-create/small-spaces-big-ideas/teams/ecofridome/members" class="qr-button" target="_blank"  rel="noopener">
+              <img src="images/PortfolioPictures/QR/NASAQR.png" alt="NASA Space App Link">
+
+          </a>
+
+          <a href="Titles and certificates/titles and certificates V3.pdf" class="qr-button" target="_blank"  rel="noopener">
+              <img src="images/PortfolioPictures/QR/" alt="Download titles">
+
+          </a>
+
+          <a href="https://example.com/project1" class="qr-button" target="_blank"  rel="noopener">
+              <img src="images/PortfolioPictures/QR/" alt="QR Code">
+
+          </a>
+
+          <a href="https://example.com/project1" class="qr-button" target="_blank"  rel="noopener">
+              <img src="images/PortfolioPictures/QR/" alt="QR Code">
+
+          </a>
+          
+        </div>
+
+        <article class="job">
+          <h4>Customer Service Experience</h4>
+          <span class="job-meta">SITEL S.A – 2018–2022 (Panama)</span>
+          <p>
+            Real-time technical assistance for U.S. customers under Best Buy
+            Geek Squad projects.
+          </p>
+        </article>
+
+        <article class="job">
+          <h4>Settlements Negotiator Agent (Dominican Republic)</h4>
+          <span class="job-meta">International Contact Center – 2022–2025</span>
+          <p>
+            Negotiations between law firms and creditors for U.S. customers.
+          </p>
+        </article>
+
+      </section>
+
+    </section>
+
+    <!-- RIGHT COLUMN -->
+    <aside class="sidebar">
+
+      <!-- PERSONAL INFO -->
+      <section class="sidebar-block">
+        <h7>Personal Info</h7>
+        <ul>
+          <li><strong>Address:</strong> Torre Galco IV, Apt 3B-1</li>
+          <li><strong>Phone:</strong> (829) 723-9098</li>
+          <li><strong>Email:</strong> villasmilmolinarubene@hotmail.com</li>
+        </ul>
+      </section>
+
+      <!-- SKILLS -->
+      <section class="sidebar-block">
+        <h7>Skills</h7>
+
+        <div class="skill">
+          <span>HTML / CSS</span>
+          <div class="dots"><span></span><span></span><span></span><span></span></div>
+        </div>
+
+        <div class="skill">
+          <span>C# / Java / PHP / JS / Python</span>
+          <div class="dots"><span></span><span></span><span></span><span></span></div>
+        </div>
+
+        <div class="skill">
+          <span>Unreal Engine</span>
+          <div class="dots"><span></span><span></span><span></span></div>
+        </div>
+
+        <div class="skill">
+          <span>MySQL</span>
+          <div class="dots"><span></span><span></span><span></span></div>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section class="sidebar-block">
+        <h7>Education</h7>
+        <ul>
+          <span>College Degree in Computer Engineering</span>
+          <span>English B2 Level Certificate</span>
+        </ul>
+        
+      </section>
+
+      <!-- HOBBIES -->
+      <section class="sidebar-block">
+        <h7>Hobbies</h7>
+        <ul class="hobbies">
+          <li>Videogames</li>
+          <li>Board Games</li>
+          <li>Literature</li>
+          <li>Music</li>
+          <li>Movies</li>
+        </ul>
+      </section>
+
+    </aside>
+
   </main>
 
   <!-- Footer -->
@@ -191,4 +321,3 @@
 
 </body>
 </html>
-
