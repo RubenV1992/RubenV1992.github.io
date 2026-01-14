@@ -1,0 +1,182 @@
+
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  background: #f4f6f8;
+  color: #1a1a1a;
+}
+
+/* MAIN GRID */
+.portfolio {
+  display: grid;
+  grid-template-columns: 2.5fr 1fr;
+  max-width: 1200px;
+  margin: 40px auto;
+  background: #ffffff;
+}
+
+.portfolio h1, h2, h3, h4, p {
+  color: #1a1a1a;
+
+}
+.portfolio h6, p-experience{
+  color: #ffffff;
+  font-size: 150%;
+}
+
+.portfolio h7{
+   color: #ffffff;
+   font-size: 200%;
+   font-style: normal;
+}
+
+/* LEFT COLUMN */
+.main-column {
+  padding: 32px;
+}
+
+/* HEADER */
+.profile-header {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.profile-image img {
+  width: 160px;
+  height: auto;
+  border-radius: 4px;
+}
+
+.profile-info h1 {
+  font-size: 2rem;
+}
+
+.profile-info h2 {
+  font-weight: 400;
+  color: #555;
+}
+
+.profile-info p {
+  margin-top: 8px;
+  font-size: 0.9rem;
+}
+
+/* CARDS */
+.card {
+  margin-bottom: 32px;
+}
+
+.card h3 {
+  margin-bottom: 12px;
+  border-bottom: 2px solid #0d5ea6;
+  padding-bottom: 6px;
+}
+
+/* EXPERIENCE */
+.job {
+  margin-bottom: 16px;
+}
+
+.job-meta {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+/* QR GRID */
+.qr-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 24px 0;
+
+  
+}
+
+.qr-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 6px;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  text-decoration: none;
+}
+
+.qr-button img {
+  width: 100%;
+  max-width: 100px;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
+/* Hover / Focus */
+.qr-button:hover,
+.qr-button:focus-visible {
+  border-color: #0d5ea6;
+  box-shadow: 0 0 0 2px rgba(13,94,166,0.2);
+}
+
+
+/* SIDEBAR */
+.sidebar {
+  background: #0d5ea6;
+  color: white;
+  padding: 32px 24px;
+}
+
+.sidebar-block {
+  margin-bottom: 32px;
+}
+
+.sidebar-block h3 {
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+  padding-bottom: 6px;
+}
+
+.sidebar ul {
+  list-style: none;
+  font-size: 0.9rem;
+}
+
+.sidebar li {
+  margin-bottom: 8px;
+}
+
+/* SKILLS */
+.skill {
+  margin-bottom: 12px;
+}
+
+.skill span {
+  display: block;
+  font-size: 0.85rem;
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.dots span {
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+/* HOBBIES */
+.hobbies li {
+  font-size: 0.85rem;
+}

@@ -1,0 +1,159 @@
+/* 3D Hover Animation for Product Images */
+
+/* Product Image Container - Hidden by default, positioned below card */
+.product-image-container {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(40px) translateZ(0);
+  width: 120px;
+  min-height: 200px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: none;
+  will-change: transform, opacity;
+}
+
+/* Product Image - The actual bottle/image */
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+  transform: rotateX(0deg);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Hover State - Card is hovered */
+.product-card:hover .product-image-container {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-60px) translateZ(20px);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Subtle rotation on hover for 3D effect */
+.product-card:hover .product-image {
+  transform: rotateX(-5deg) rotateY(5deg);
+}
+
+/* Ensure card content remains readable during hover */
+.product-card:hover .product-info {
+  transform: translateY(0);
+}
+
+/* GPU Acceleration - Force hardware acceleration */
+.product-image-container,
+.product-image {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Smooth exit animation when hover ends */
+.product-card:not(:hover) .product-image-container {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Optional: Slight scale effect on image during hover */
+.product-card:hover .product-image {
+  transform: rotateX(-5deg) rotateY(5deg) scale(1.05);
+}
+
+/* Mobile fallback - Show image statically on touch devices */
+@media (hover: none) {
+  .product-image-container {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    opacity: 1;
+    width: 100%;
+    height: 180px;
+    margin: 1rem 0;
+    order: -1;
+  }
+
+  .product-image {
+    transform: none;
+  }
+
+  .product-card {
+    min-height: auto;
+  }
+}
+
+/* Ensure no layout shift during animation */
+.product-card {
+  contain: layout style paint;
+}
+
+/* Enhanced shadow during hover for depth */
+.product-card:hover .product-image-container {
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.5));
+}
+
+/* Product Slogan Container - Hidden by default, positioned below main image */
+.product-slogan-container {
+  position: absolute;
+  top: calc(100% + 20px);
+  left: 50%;
+  transform: translateX(-50%) translateY(60px) translateZ(0);
+  width: 200px;
+  max-width: 90%;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+  transition: none;
+  will-change: transform, opacity;
+}
+
+/* Product Slogan Image */
+.product-slogan {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Hover State - Slogan rises and becomes visible below the main image */
+.product-card:hover .product-slogan-container {
+  opacity: 1;
+  transform: translateX(-50%) translateY(10px) translateZ(10px);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Smooth exit animation when hover ends */
+.product-card:not(:hover) .product-slogan-container {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* GPU Acceleration for slogan */
+.product-slogan-container,
+.product-slogan {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Mobile fallback for slogan */
+@media (hover: none) {
+  .product-slogan-container {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    opacity: 1;
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  .product-slogan {
+    transform: none;
+  }
+}
