@@ -94,8 +94,8 @@ body {
 .qr-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin: 24px 0;
+  gap: 6px;
+  margin: 12px 0;
 
   
 }
@@ -180,4 +180,5 @@ body {
 .hobbies li {
   font-size: 0.85rem;
 }
+
 
