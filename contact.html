@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Card</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="Contact-card.css">
+</head>
+<body>
+
+  <section class="contact-section">
+
+    <div class="contact-card">
+
+      <div class="card-inner">
+
+        <!-- FRONT FACE -->
+        <div class="card-face card-front">
+          <div class="front-card-wrapper">
+
+            <!-- Front QR -->
+            <img
+              src="images/Contact Card/page-1.png"
+             
+              class="front-qr"
+            >
+
+            <!-- Optional text below QR -->
+           <!-- <div class="front-text">
+              Scan to save my contact
+            </div>-->
+
+          </div>
+        </div>
+
+        <!-- BACK FACE -->
+        <div class="card-face card-back">
+          <div class="back-card-wrapper">
+
+            <!-- Background image -->
+            <img
+              src="images/Contact Card/page-2.png"
+              alt="Contact details and certificates"
+              class="back-card-image"
+            >
+
+            <!-- Top-left QR (external link) -->
+            <a
+              href="CV-EN-2.pdf"
+              class="qr-hotspot qr-top-left"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open CV PDF"
+            ></a>
+
+            <!-- Bottom-right QR (download) -->
+            <a
+              href="TC-V3.pdf"
+              class="qr-hotspot qr-bottom-right"
+              download
+              aria-label="Download certificates"
+            ></a>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</body>
+</html>
