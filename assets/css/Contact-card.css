@@ -1,0 +1,175 @@
+/* BASIC RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f4f6f8;
+  font-family: system-ui, sans-serif;
+}
+
+/* SECTION WRAPPER */
+.contact-section {
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+
+/* CARD CONTAINER (Perspective lives here) */
+.contact-card {
+  width: min(90vw, 900px);   /* Bigger on desktop */
+  aspect-ratio: 16 / 9;
+  perspective: 1200px;
+  
+}
+
+
+/* INNER WRAPPER */
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
+ 
+}
+
+
+/* FLIP ON HOVER */
+.contact-card:hover .card-inner {
+  transform: rotateX(180deg);
+}
+
+.contact-card:hover .card-inner .back-card-wrapper{
+  transform: rotateX(360deg);
+}
+
+
+/* CARD FACES */
+.card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  border-radius: 10px;
+  overflow: hidden;
+
+  border: 2px solid #1b3f7a;   /* ← border goes here */
+
+  overflow: hidden;
+   background: #ffffff;
+  
+}
+
+.card-back {
+  transform: rotateX(180deg) translateZ(1px);
+  background: #ffffff;
+}
+
+
+
+.front-card-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+  gap: 1rem;
+}
+
+.front-qr {
+  width: 40%;
+  max-width: 280px;
+  min-width: 160px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+
+.back-card-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.back-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+
+.qr-hotspot {
+  position: absolute;
+  cursor: pointer;
+}
+
+.qr-top-left {
+  top: 2%;
+  left: 7.5%;
+  width: 25%;
+  aspect-ratio: 1 / 1;
+}
+
+.qr-bottom-right {
+  bottom: 3%;
+  right: 9%;
+  width: 25%;
+  aspect-ratio: 1 / 1;
+}
+
+.qr-hotspot :hover {
+  outline-color: aqua;
+}
+
+@media (max-width: 768px) {
+  .contact-card {
+    width: 95vw;
+    aspect-ratio: 3 / 4; /* Better for phones */
+  }
+
+  .front-qr {
+    width: 65%;
+  }
+
+  .qr-top-left,
+  .qr-bottom-right {
+    width: 32%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* MOBILE: TAP FRIENDLY */
+@media (hover: none) {
+  .contact-card:active .card-inner {
+    transform: rotateX(180deg);
+  }
+}
